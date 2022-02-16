@@ -6,7 +6,12 @@ app = FastAPI()
 
 data = data.CovidData()
 
-@app.get("/")
+class NGINXConfig():
+    """Custom Class for configuring the api for NGINX deployment"""
+    uri = "/covid-data"  # base uri where api will be deployed example.com/<uri>
+    ## prefix parameter in include router doesn't work 2020-02-17
+
+@app.get(f"{NGINXConfig.uri}/")
 def get_routes():
     return {
         "Welcome": "Routes are listed below",
@@ -42,14 +47,14 @@ def get_routes():
         }
     }
 
-@app.get("/age/total")
+@app.get(f"{NGINXConfig.uri}/age/total")
 def age_total():
     df = data.load_csv("Cases_AgeRange.csv", parse_dates=['notification_date'])
     out = processing.AgeGroup(df)
     out.age_group_totals()
     return out.data
 
-@app.get("/age/{group}")
+@app.get(f"{NGINXConfig.uri}/age/{group}")
 def age_group_overtime(group: str, response: Response):
     df = data.load_csv("Cases_AgeRange.csv")
     out = processing.AgeGroup(df)
@@ -71,7 +76,7 @@ def age_group_overtime(group: str, response: Response):
 /location/{type}
 """
 
-@app.get("/location/postcode/{postcode}")
+@app.get(f"{NGINXConfig.uri}/location/postcode/{postcode}")
 def return_postcode_overtime(postcode, response: Response):
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
@@ -84,7 +89,7 @@ def return_postcode_overtime(postcode, response: Response):
     response.status_code = 200
     return out.data
 
-@app.get("/location/lga/{lga}")
+@app.get(f"{NGINXConfig.uri}/location/lga/{lga}")
 def return_lga_overtime(lga, response: Response):
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
@@ -97,7 +102,7 @@ def return_lga_overtime(lga, response: Response):
     response.status_code = 200
     return out.data
 
-@app.get("/location/lhd/{lhd}")
+@app.get(f"{NGINXConfig.uri}/location/lhd/{lhd}")
 def return_lhd_overtime(lhd, response: Response):
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
@@ -110,7 +115,7 @@ def return_lhd_overtime(lhd, response: Response):
     response.status_code = 200
     return out.data
 
-@app.get("/location/{type}")
+@app.get(f"{NGINXConfig.uri}/location/{type}")
 def return_locations(type: str):
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
@@ -124,7 +129,7 @@ def return_locations(type: str):
 /tests/lhd/{lhd}
 /tests/lga/{lga}
 """
-@app.get("/tests/postcode/{postcode}")
+@app.get(f"{NGINXConfig.uri}/tests/postcode/{postcode}")
 def test_postcode(postcode: str):
     df = data.load_csv("Tests_Location.csv")
     out = processing.Tests(df)
@@ -137,7 +142,7 @@ def test_postcode(postcode: str):
     response.status_code = 200
     return out.data
 
-@app.get("/tests/lga/{lga}")
+@app.get(f"{NGINXConfig.uri}/tests/lga/{lga}")
 def test_lga(lga: str):
     df = data.load_csv("Tests_Location.csv")
     out = processing.Tests(df)
@@ -150,7 +155,7 @@ def test_lga(lga: str):
     response.status_code = 200
     return out.data
 
-@app.get("/tests/lhd/{lhd}")
+@app.get(f"{NGINXConfig.uri}/tests/lhd/{lhd}")
 def tests_lhd(lhd: str):
     df = data.load_csv("Tests_Location.csv")
     out = processing.Tests(df)
