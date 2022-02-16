@@ -62,16 +62,50 @@ def age_group_overtime(group: str, response: Response):
     response.status_code = 200
     return out.data
 
-@app.get("/location/{type}")
-def return_locations(type: str):
-    df = data.load_csv("Cases_Location.csv", parse_dates=['notification_date'])
+# TODO: refactor
+
+@app.get("/location/postcode/{code}")
+def return_postcode_overtime(code, response: Response):
+    df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
-    out.list_locations(type)
+    out.postcode_overtime(code)
+
+    if not out.data:
+        response.status_code = 404
+        return "Invalid Postcode"
+
+    response.status_code = 200
     return out.data
 
-@app.get("location/{postcode}")
-def return_postcode_overtime(postcode: str):
-    df = data.load_csv("Cases_Location.csv", parse_dates=['notification_date'])
+@app.get("/location/lga/{code}")
+def return_lga_overtime(code, response: Response):
+    df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
-    out.postcode_overtime(postcode)
+    out.lga_overtime(code)
+
+    if not out.data:
+        response.status_code = 404
+        return "Invalid LGA Code"
+
+    response.status_code = 200
+    return out.data
+
+@app.get("/location/lhd/{code}")
+def return_lhd_overtime(code, response: Response):
+    df = data.load_csv("Cases_Location.csv")
+    out = processing.CaseLocation(df)
+    out.lhd_overtime(code)
+
+    if not out.data:
+        response.status_code = 404
+        return "Invalid LHD Code"
+
+    response.status_code = 200
+    return out.data
+
+@app.get("/location/{type}")
+def return_locations(type: str):
+    df = data.load_csv("Cases_Location.csv")
+    out = processing.CaseLocation(df)
+    out.list_locations(type)
     return out.data
