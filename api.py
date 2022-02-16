@@ -1,5 +1,6 @@
-from fastapi import FastApi
+from fastapi import FastAPI, Response
 from src import data
+from src import processing
 
 app = FastAPI()
 
@@ -44,7 +45,33 @@ def get_routes():
 @app.get("/age/total")
 def age_total():
     df = data.load_csv("Cases_AgeRange.csv", parse_dates=['notification_date'])
-    out = df.groupby(["age_group"]).sum().to_dict(orient="dict")['confirmed_cases_count']
-    return out
+    out = processing.AgeGroup(df)
+    out.age_group_totals()
+    return out.data
 
-@app.get()
+@app.get("/age/{group}")
+def age_group_overtime(group: str, response: Response):
+    df = data.load_csv("Cases_AgeRange.csv")
+    out = processing.AgeGroup(df)
+    out.age_group_overtime(group)
+
+    if not out.data:
+        response.status_code = 404
+        return "Invalid Age Group"
+
+    response.status_code = 200
+    return out.data
+
+@app.get("/location/{type}")
+def return_locations(type: str):
+    df = data.load_csv("Cases_Location.csv", parse_dates=['notification_date'])
+    out = processing.CaseLocation(df)
+    out.list_locations(type)
+    return out.data
+
+@app.get("location/{postcode}")
+def return_postcode_overtime(postcode: str):
+    df = data.load_csv("Cases_Location.csv", parse_dates=['notification_date'])
+    out = processing.CaseLocation(df)
+    out.postcode_overtime(postcode)
+    return out.data
