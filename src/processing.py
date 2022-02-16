@@ -48,7 +48,7 @@ class CaseLocation():
 
         locations = {  # column names are order for human-readable output
             "lhd" : ['lhd_2010_name', 'lhd_2010_code'],
-            "lga" : ['lga_name19', 'loga_code19'],
+            "lga" : ['lga_name19', 'lga_code19'],
             "postcode" : ['postcode']
         }
 
@@ -62,6 +62,13 @@ class CaseLocation():
         self.data = _out
 
     def postcode_overtime(self, code):
-        _out = self.data,drop(['lhd_2010_code', 'lhd_2010_name', 'lga_code19', 'lga_name19'], axis=1)[df['postcode' == code]].set_index(['notification_date', 'confirmed_by_pcr']).to_dict(orient='dict')['postcode']
+        _out = self.data.drop(['lhd_2010_code', 'lhd_2010_name', 'lga_code19', 'lga_name19'], axis=1)[self.data['postcode'] == code].groupby('notification_date').sum().to_dict(orient='dict')['confirmed_cases_count']
+        self.data = _out
 
+    def lga_overtime(self, code):
+        _out = self.data.drop(['lhd_2010_code', 'lhd_2010_name', 'lga_name19', 'postcode'], axis=1)[self.data['lga_code19'] == code].groupby('notification_date').sum().to_dict(orient='dict')['confirmed_cases_count']
+        self.data = _out
+
+    def lhd_overtime(self, code):
+        _out = self.data.drop(['lhd_2010_name', 'postcode', 'lga_name19', 'lga_name19'], axis=1)[self.data['lhd_2010_code'] == code].groupby('notification_date').sum().to_dict(orient='dict')['confirmed_cases_count']
         self.data = _out
