@@ -62,13 +62,20 @@ def age_group_overtime(group: str, response: Response):
     response.status_code = 200
     return out.data
 
-# TODO: refactor
 
-@app.get("/location/postcode/{code}")
-def return_postcode_overtime(code, response: Response):
+"""Location Routes
+
+/location/postcode/{postcode}
+/location/lga/{lga}
+/location/lhd/{lhd}
+/location/{type}
+"""
+
+@app.get("/location/postcode/{postcode}")
+def return_postcode_overtime(postcode, response: Response):
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
-    out.postcode_overtime(code)
+    out.postcode(postcode)
 
     if not out.data:
         response.status_code = 404
@@ -77,28 +84,28 @@ def return_postcode_overtime(code, response: Response):
     response.status_code = 200
     return out.data
 
-@app.get("/location/lga/{code}")
-def return_lga_overtime(code, response: Response):
+@app.get("/location/lga/{lga}")
+def return_lga_overtime(lga, response: Response):
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
-    out.lga_overtime(code)
+    out.lga(lga)
 
     if not out.data:
         response.status_code = 404
-        return "Invalid LGA Code"
+        return "Invalid LGA Code or Name"
 
     response.status_code = 200
     return out.data
 
-@app.get("/location/lhd/{code}")
-def return_lhd_overtime(code, response: Response):
+@app.get("/location/lhd/{lhd}")
+def return_lhd_overtime(lhd, response: Response):
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
-    out.lhd_overtime(code)
+    out.lhd(lhd)
 
     if not out.data:
         response.status_code = 404
-        return "Invalid LHD Code"
+        return "Invalid LHD Code or Name"
 
     response.status_code = 200
     return out.data
@@ -108,4 +115,50 @@ def return_locations(type: str):
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
     out.list_locations(type)
+    return out.data
+
+
+"""Test Routes
+
+/tests/postcode/{postcode}
+/tests/lhd/{lhd}
+/tests/lga/{lga}
+"""
+@app.get("/tests/postcode/{postcode}")
+def test_postcode(postcode: str):
+    df = data.load_csv("Tests_Location.csv")
+    out = processing.Tests(df)
+    out.postcode(postcode)
+
+    if not out.data:
+        response.status_code = 404
+        return "Invalid Postcode"
+
+    response.status_code = 200
+    return out.data
+
+@app.get("/tests/lga/{lga}")
+def test_lga(lga: str):
+    df = data.load_csv("Tests_Location.csv")
+    out = processing.Tests(df)
+    out.lga(lga)
+
+    if not out.data:
+        response.status_code = 404
+        return "Invalid LGA Code or Name"
+
+    response.status_code = 200
+    return out.data
+
+@app.get("/tests/lhd/{lhd}")
+def tests_lhd(lhd: str):
+    df = data.load_csv("Tests_Location.csv")
+    out = processing.Tests(df)
+    out.lhd(lhd)
+
+    if not out.data:
+        response.status_code = 404
+        return "Invalid LHD Code or Name"
+
+    response.status_code = 200
     return out.data
