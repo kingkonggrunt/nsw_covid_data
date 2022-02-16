@@ -1,5 +1,5 @@
 import pandas as pd
-from data import CovidData
+from .data import CovidData
 
 # TODO: integrate discontinued data because the arrg data only shows data after the 20-1-2020
 
@@ -7,24 +7,24 @@ class AgeGroup():
 
     def __init__(self, df):
         self._df = df
-        self.data = self.df
+        self.data = self._df
 
         # self._data = CovidData()
         # self.df_current = self._data.load("Cases_AgeRange.csv", parse_dates=['notification_date'])
         # self.df_dis = self._data.load("Cases_AgeRange_Dis.csv", parse_dates=['notification_date'])
 
 
-    def reset():
+    def reset(self):
         """reset the dataframe"""
         self.data = self._df
 
-    def age_group_totals():
+    def age_group_totals(self):
         """return the total age group data"""
         self.data = self.data.groupby(["age_group"]).sum().to_dict(orient="dict")['confirmed_cases_count']
 
-    def age_group_overtime(age_group):
+    def age_group_overtime(self, age_group):
         """return case data for an age group overtime"""
-        self.data = df[df["age_group"] == f"AgeGroup_{age_group}"].drop('age_group', axis=1).set_index(['notification_date', 'confirmed_by_pcr']).to_dict(orient='index')['confirmed_cases_count']
+        self.data = self.data[self.data["age_group"] == f"AgeGroup_{age_group}"].drop('age_group', axis=1).groupby('notification_date').sum().to_dict(orient='dict')['confirmed_cases_count']
 
 
 class CaseLocation():
@@ -33,11 +33,11 @@ class CaseLocation():
         self._df = df
         self.data = self._df  # allow resetting of df
 
-    def reset():
+    def reset(self):
         """reset the dataframe"""
         self.data = self._df
 
-    def list_locations(type):
+    def list_locations(self, type):
         """acquire the list of locations of the location type - for use in the api
 
         Parameters
@@ -61,5 +61,7 @@ class CaseLocation():
 
         self.data = _out
 
-    def postcode_overtime(code):
+    def postcode_overtime(self, code):
         _out = self.data,drop(['lhd_2010_code', 'lhd_2010_name', 'lga_code19', 'lga_name19'], axis=1)[df['postcode' == code]].set_index(['notification_date', 'confirmed_by_pcr']).to_dict(orient='dict')['postcode']
+
+        self.data = _out
