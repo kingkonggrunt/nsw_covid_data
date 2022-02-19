@@ -130,41 +130,44 @@ def return_locations(type: str):
 @app.get(NGINXConfig.uri + "/tests/postcode/{postcode}")
 def test_postcode(postcode: str, response: Response):
     """Return testing data for a postcode"""
-    df = data.load_csv("Tests_Location.csv")
-    out = processing.Tests(df)
-    out.postcode(postcode)
+    out = processing.Tests()
+    return out.postcode(postcode)
 
-    if not out.data:
-        response.status_code = 404
-        return "Invalid Postcode"
+    # if not out.data:
+    #     response.status_code = 404
+    #     return "Invalid Postcode"
 
-    response.status_code = 200
-    return out.data
+    # response.status_code = 200
+    # return out.data
 
 @app.get(NGINXConfig.uri + "/tests/lga/{lga}")
 def test_lga(lga: str, response: Response):
     """Return testing data for an lga"""
-    df = data.load_csv("Tests_Location.csv")
-    out = processing.Tests(df)
-    out.lga(lga)
+    out = processing.Tests()
+    return out.lga(lga)
 
-    if not out.data:
-        response.status_code = 404
-        return "Invalid LGA Code or Name"
+    # if not out.data:
+    #     response.status_code = 404
+    #     return "Invalid LGA Code or Name"
 
-    response.status_code = 200
-    return out.data
+    # response.status_code = 200
+    # return out.data
 
 @app.get(NGINXConfig.uri + "/tests/lhd/{lhd}")
 def tests_lhd(lhd: str, response: Response):
     """Return testing data for an lhd"""
-    df = data.load_csv("Tests_Location.csv")
-    out = processing.Tests(df)
-    out.lhd(lhd)
+    out = processing.Tests()
+    return out.lhd(lhd)
 
-    if not out.data:
-        response.status_code = 404
-        return "Invalid LHD Code or Name"
+    # if not out.data:
+    #     response.status_code = 404
+    #     return "Invalid LHD Code or Name"
 
-    response.status_code = 200
-    return out.data
+    # response.status_code = 200
+    # return out.data
+    
+@app.get(NGINXConfig.uri + "/tests/{type}")
+def return_locations(type: str):
+    """Return the list of available postcodes, lgas, and lhd the user can request data for"""
+    out = processing.CaseLocation()
+    return out.list_locations(type)
