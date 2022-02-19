@@ -2,6 +2,8 @@
 
 Presents the NSW COVID-19 Age Group, Case Location, and PCR Testing Data as a FastAPI
 
+API is currently deployed @ [dcong.page/covid-data](dcong.page/covid-data)
+
 #### Next Steps
 - Implement Discontinued Data
 - Logging and Tracking system for the Data Updater
