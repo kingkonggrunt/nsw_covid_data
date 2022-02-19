@@ -81,52 +81,48 @@ def age_group_overtime(group: str, response: Response):
 @app.get(NGINXConfig.uri + "/location/postcode/{postcode}")
 def return_postcode_overtime(postcode, response: Response):
     """Return the daily cases data for a postcode"""
-    df = data.load_csv("Cases_Location.csv")
-    out = processing.CaseLocation(df)
-    out.postcode(postcode)
+    out = processing.CaseLocation()
 
-    if not out.data:
-        response.status_code = 404
-        return "Invalid Postcode"
-
-    response.status_code = 200
-    return out.data
+    
+    # if not out.postcode(postcode):
+    #     response.status_code = 404
+    #     return "Invalid Postcode"
+    # else:
+    #     response.status_code = 200
+    return out.postcode(postcode)
+        
 
 @app.get(NGINXConfig.uri + "/location/lga/{lga}")
 def return_lga_overtime(lga, response: Response):
     """Return the daily cases data for an lga"""
-    df = data.load_csv("Cases_Location.csv")
-    out = processing.CaseLocation(df)
-    out.lga(lga)
+    out = processing.CaseLocation()
+    return out.lga(lga)
 
-    if not out.data:
-        response.status_code = 404
-        return "Invalid LGA Code or Name"
+    # if not out.data:
+    #     response.status_code = 404
+    #     return "Invalid LGA Code or Name"
 
-    response.status_code = 200
-    return out.data
+    # response.status_code = 200
+    # return out.data
 
 @app.get(NGINXConfig.uri + "/location/lhd/{lhd}")
 def return_lhd_overtime(lhd, response: Response):
     """Return the daily cases data for an lhd"""
-    df = data.load_csv("Cases_Location.csv")
-    out = processing.CaseLocation(df)
-    out.lhd(lhd)
+    out = processing.CaseLocation()
+    return out.lhd(lhd)
 
-    if not out.data:
-        response.status_code = 404
-        return "Invalid LHD Code or Name"
-
-    response.status_code = 200
-    return out.data
+    # if not out.data:
+        # response.status_code = 404
+        # return "Invalid LHD Code or Name"
+# 
+    # response.status_code = 200
+    # return out.data
 
 @app.get(NGINXConfig.uri + "/location/{type}")
 def return_locations(type: str):
     """Return the list of available postcodes, lgas, and lhd the user can request data for"""
-    df = data.load_csv("Cases_Location.csv")
-    out = processing.CaseLocation(df)
-    out.list_locations(type)
-    return out.data
+    out = processing.CaseLocation()
+    return out.list_locations(type)
 
 
 # ===== Testing Routes
