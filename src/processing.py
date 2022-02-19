@@ -4,28 +4,43 @@ from .data import CovidData
 # TODO: integrate discontinued data because the arrg data only shows data after the 20-1-2020
 
 class AgeGroup():
+    """AgeGroup Data Class"""
+    
+    data = "Cases_AgeRange.csv"
+    data_dis = "Cases_AgeRange_Dis.csv"
 
-    def __init__(self, df):
-        self._df = df
-        self.data = self._df
-
-        # self._data = CovidData()
-        # self.df_current = self._data.load("Cases_AgeRange.csv", parse_dates=['notification_date'])
-        # self.df_dis = self._data.load("Cases_AgeRange_Dis.csv", parse_dates=['notification_date'])
-
-
-    def reset(self):
-        """reset the dataframe"""
-        self.data = self._df
+    def __init__(self):
+        self._covid = CovidData()
+        self.df = self._covid.load_csv(self.data)
+        self.df_dis = self._covid.load_csv(self.data_dis, parse_dates=['notification_date'])
 
     def age_group_totals(self):
         """return the total age group data"""
-        self.data = self.data.groupby(["age_group"]).sum().to_dict(orient="dict")['confirmed_cases_count']
+        d_new = self.df.groupby('age_group').sum().to_dict('dict')['confirmed_cases_count']
+        
+        d_dis = self.df_dis[self.df_dis['notification_date'] < '2022-01-20']
+        d_dis['notification_date'] = d_dis['notification_date'].dt.strftime("%Y-%m-%d")
+        d_dis = d_dis.groupby(['age_group']).count().to_dict('dict')['notification_date']
 
+        # update the new data with the discounted data
+        for group in d_new:
+            d_new[group] += d_dis[group]
+            
+        return d_new
+        
     def age_group_overtime(self, age_group):
         """return case data for an age group overtime"""
-        self.data = self.data[self.data["age_group"] == f"AgeGroup_{age_group}"].drop('age_group', axis=1).groupby('notification_date').sum().to_dict(orient='dict')['confirmed_cases_count']
+        
+        d_new = self.df[self.df["age_group"] == f"AgeGroup_{age_group}"].drop('age_group', axis=1).groupby('notification_date').sum().to_dict(orient='dict')['confirmed_cases_count']
+        
+        d_dis = self.df_dis[self.df_dis['notification_date'] < '2022-01-20']
+        d_dis['notification_date'] = d_dis['notification_date'].dt.strftime("%Y-%m-%d")
+        d_dis = d_dis[d_dis['age_group'] == f"AgeGroup_{age_group}"].groupby('notification_date').sum().to_dict('dict')['confirmed_cases_count']
 
+        for group in d_new:
+            d_new[group] += d_dis[group]
+            
+        return d_new
 
 class CaseLocation():
 

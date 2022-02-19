@@ -60,24 +60,20 @@ def get_routes():
 @app.get(NGINXConfig.uri + "/age/total")
 def age_total():
     """Return the total covid cases for each age group"""
-    df = data.load_csv("Cases_AgeRange.csv", parse_dates=['notification_date'])
-    out = processing.AgeGroup(df)
-    out.age_group_totals()
-    return out.data
+    out = processing.AgeGroup()
+    return out.age_group_totals()
 
 @app.get(NGINXConfig.uri + "/age/{group}")
 def age_group_overtime(group: str, response: Response):
     """Return the daily cases data for an age group"""
-    df = data.load_csv("Cases_AgeRange.csv")
-    out = processing.AgeGroup(df)
-    out.age_group_overtime(group)
+    out = processing.AgeGroup()
 
     if not out.data:
         response.status_code = 404
         return "Invalid Age Group"
 
     response.status_code = 200
-    return out.data
+    return out.age_group_overtime(group)
 
 
 # ===== Postcode Routes
