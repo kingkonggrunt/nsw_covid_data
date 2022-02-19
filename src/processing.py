@@ -35,12 +35,11 @@ class AgeGroup():
         
         d_dis = self.df_dis[self.df_dis['notification_date'] < '2022-01-20']
         d_dis['notification_date'] = d_dis['notification_date'].dt.strftime("%Y-%m-%d")
-        d_dis = d_dis[d_dis['age_group'] == f"AgeGroup_{age_group}"].groupby('notification_date').sum().to_dict('dict')['confirmed_cases_count']
+        d_dis = d_dis[d_dis['age_group'] == f"AgeGroup_{age_group}"].groupby('notification_date').count().to_dict('dict')['age_group']
 
-        for group in d_new:
-            d_new[group] += d_dis[group]
+        d_dis.update(d_new)
             
-        return d_new
+        return d_dis
 
 class CaseLocation():
 
