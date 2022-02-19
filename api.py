@@ -11,8 +11,16 @@ class NGINXConfig():
     uri = "/covid-data"  # base uri where api will be deployed example.com/<uri>
     ## prefix parameter in include router doesn't work 2020-02-17
 
+
+# ===== Root
+
 @app.get(NGINXConfig.uri + "/")
 def get_routes():
+    """
+    Return the routes available for this API. As of writing this docstring (20-02-2022) FastAPI's --root-path parameter doesn't work
+    so FastAPI's autodocumentation doesn't work if the API is deployed on a URI proxy. Setting the root path to reveal available routes is a comprimise. 
+    """
+    
     return {
         "Welcome": "Routes are listed below",
         "Routes": {
@@ -47,8 +55,11 @@ def get_routes():
         }
     }
 
+# ===== Age Group Routes
+
 @app.get(NGINXConfig.uri + "/age/total")
 def age_total():
+    """Return the total covid cases for each age group"""
     df = data.load_csv("Cases_AgeRange.csv", parse_dates=['notification_date'])
     out = processing.AgeGroup(df)
     out.age_group_totals()
@@ -56,6 +67,7 @@ def age_total():
 
 @app.get(NGINXConfig.uri + "/age/{group}")
 def age_group_overtime(group: str, response: Response):
+    """Return the daily cases data for an age group"""
     df = data.load_csv("Cases_AgeRange.csv")
     out = processing.AgeGroup(df)
     out.age_group_overtime(group)
@@ -68,16 +80,11 @@ def age_group_overtime(group: str, response: Response):
     return out.data
 
 
-"""Location Routes
-
-/location/postcode/{postcode}
-/location/lga/{lga}
-/location/lhd/{lhd}
-/location/{type}
-"""
+# ===== Postcode Routes
 
 @app.get(NGINXConfig.uri + "/location/postcode/{postcode}")
 def return_postcode_overtime(postcode, response: Response):
+    """Return the daily cases data for a postcode"""
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
     out.postcode(postcode)
@@ -91,6 +98,7 @@ def return_postcode_overtime(postcode, response: Response):
 
 @app.get(NGINXConfig.uri + "/location/lga/{lga}")
 def return_lga_overtime(lga, response: Response):
+    """Return the daily cases data for an lga"""
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
     out.lga(lga)
@@ -104,6 +112,7 @@ def return_lga_overtime(lga, response: Response):
 
 @app.get(NGINXConfig.uri + "/location/lhd/{lhd}")
 def return_lhd_overtime(lhd, response: Response):
+    """Return the daily cases data for an lhd"""
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
     out.lhd(lhd)
@@ -117,20 +126,18 @@ def return_lhd_overtime(lhd, response: Response):
 
 @app.get(NGINXConfig.uri + "/location/{type}")
 def return_locations(type: str):
+    """Return the list of available postcodes, lgas, and lhd the user can request data for"""
     df = data.load_csv("Cases_Location.csv")
     out = processing.CaseLocation(df)
     out.list_locations(type)
     return out.data
 
 
-"""Test Routes
+# ===== Testing Routes
 
-/tests/postcode/{postcode}
-/tests/lhd/{lhd}
-/tests/lga/{lga}
-"""
 @app.get(NGINXConfig.uri + "/tests/postcode/{postcode}")
-def test_postcode(postcode: str):
+def test_postcode(postcode: str, response: Response):
+    """Return testing data for a postcode"""
     df = data.load_csv("Tests_Location.csv")
     out = processing.Tests(df)
     out.postcode(postcode)
@@ -143,7 +150,8 @@ def test_postcode(postcode: str):
     return out.data
 
 @app.get(NGINXConfig.uri + "/tests/lga/{lga}")
-def test_lga(lga: str):
+def test_lga(lga: str, response: Response):
+    """Return testing data for an lga"""
     df = data.load_csv("Tests_Location.csv")
     out = processing.Tests(df)
     out.lga(lga)
@@ -156,7 +164,8 @@ def test_lga(lga: str):
     return out.data
 
 @app.get(NGINXConfig.uri + "/tests/lhd/{lhd}")
-def tests_lhd(lhd: str):
+def tests_lhd(lhd: str, response: Response):
+    """Return testing data for an lhd"""
     df = data.load_csv("Tests_Location.csv")
     out = processing.Tests(df)
     out.lhd(lhd)
