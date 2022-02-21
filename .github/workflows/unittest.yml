@@ -12,9 +12,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Python 3.9
         uses: actions/setup-python@v2
-          with:
-            python-version: "3.9"
-            architecture: 'x64'
+        with:
+          python-version: "3.9"
+          architecture: 'x64'
       - name: Update PIP
         run: python -m pip install --upgrade pip
       - name: Install Packages and Dependencies
