@@ -1,6 +1,6 @@
 # NSW COVID DATA
 
-![UnitTestaaa](https://github.com/kingkonggrunt/nsw_covid_data/actions/workflows/unittest.yml/badge.svg)
+![UnitTest](https://github.com/kingkonggrunt/nsw_covid_data/actions/workflows/unittest.yml/badge.svg)
 
 Presents the NSW COVID-19 Age Group, Case Location, and PCR Testing Data as a FastAPI
 
