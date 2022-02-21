@@ -1,0 +1,101 @@
+,test_date,postcode,lhd_2010_code,lhd_2010_name,lga_code19,lga_name19,test_count
+0,2020-01-01,2038,X700,Sydney,14170,Inner West (A),1
+1,2020-01-01,2039,X700,Sydney,14170,Inner West (A),1
+2,2020-01-01,2040,X700,Sydney,14170,Inner West (A),2
+3,2020-01-01,2041,X700,Sydney,14170,Inner West (A),1
+4,2020-01-01,2069,X760,Northern Sydney,14500,Ku-ring-gai (A),1
+5,2020-01-01,2074,X760,Northern Sydney,14500,Ku-ring-gai (A),1
+6,2020-01-01,2110,X760,Northern Sydney,14100,Hunters Hill (A),1
+7,2020-01-01,2137,X700,Sydney,11520,Canada Bay (A),1
+8,2020-01-01,2138,X700,Sydney,11520,Canada Bay (A),1
+9,2020-01-01,2140,X700,Sydney,17100,Strathfield (A),2
+10,2020-01-01,2151,X740,Western Sydney,16260,Parramatta (C),1
+11,2020-01-01,2155,X740,Western Sydney,17420,The Hills Shire (A),1
+12,2020-01-01,2161,X740,Western Sydney,12380,Cumberland (A),1
+13,2020-01-01,2170,X710,South Western Sydney,14900,Liverpool (C),1
+14,2020-01-01,2190,X710,South Western Sydney,11570,Canterbury-Bankstown (A),1
+15,2020-01-01,2195,X700,Sydney,11570,Canterbury-Bankstown (A),1
+16,2020-01-01,2570,X710,South Western Sydney,11450,Camden (A),2
+17,2020-01-01,2750,X750,Nepean Blue Mountains,16350,Penrith (C),2
+18,2020-01-01,2761,X740,Western Sydney,10750,Blacktown (C),1
+19,2020-01-02,2574,X710,South Western Sydney,18400,Wollondilly (A),1
+20,2020-01-03,2141,X740,Western Sydney,12380,Cumberland (A),1
+21,2020-01-04,2138,X700,Sydney,11520,Canada Bay (A),1
+22,2020-01-04,2144,X740,Western Sydney,12380,Cumberland (A),2
+23,2020-01-08,2071,X760,Northern Sydney,14500,Ku-ring-gai (A),1
+24,2020-01-10,2071,X760,Northern Sydney,14500,Ku-ring-gai (A),1
+25,2020-01-14,2485,X810,Northern NSW,17550,Tweed (A),1
+26,2020-01-15,2787,X850,Western NSW,16100,Oberon (A),1
+27,2020-01-20,2086,X760,Northern Sydney,15990,Northern Beaches (A),1
+28,2020-01-22,2134,X700,Sydney,11300,Burwood (A),2
+29,2020-01-22,2207,X720,South Eastern Sydney,10500,Bayside (A),1
+30,2020-01-22,2222,X720,South Eastern Sydney,12930,Georges River (A),1
+31,2020-01-23,2019,X720,South Eastern Sydney,10500,Bayside (A),1
+32,2020-01-23,2035,X720,South Eastern Sydney,16550,Randwick (C),1
+33,2020-01-23,2064,X760,Northern Sydney,18250,Willoughby (C),1
+34,2020-01-23,2071,X760,Northern Sydney,14500,Ku-ring-gai (A),1
+35,2020-01-23,2093,X760,Northern Sydney,15990,Northern Beaches (A),1
+36,2020-01-23,2121,X760,Northern Sydney,16260,Parramatta (C),1
+37,2020-01-23,2122,X760,Northern Sydney,16700,Ryde (C),1
+38,2020-01-23,2138,X700,Sydney,11520,Canada Bay (A),2
+39,2020-01-23,2166,X710,South Western Sydney,12850,Fairfield (C),1
+40,2020-01-24,2000,X720,South Eastern Sydney,17200,Sydney (C),2
+41,2020-01-24,2121,X760,Northern Sydney,16260,Parramatta (C),1
+42,2020-01-24,2220,X720,South Eastern Sydney,12930,Georges River (A),1
+43,2020-01-24,2234,X720,South Eastern Sydney,17150,Sutherland Shire (A),1
+44,2020-01-24,2322,X800,Hunter New England,15050,Maitland (C),1
+45,2020-01-24,2564,X710,South Western Sydney,11500,Campbelltown (C) (NSW),1
+46,2020-01-24,2567,X710,South Western Sydney,11450,Camden (A),1
+47,2020-01-24,2795,X850,Western NSW,10470,Bathurst Regional (A),1
+48,2020-01-25,2031,X720,South Eastern Sydney,16550,Randwick (C),1
+49,2020-01-25,2118,X740,Western Sydney,16260,Parramatta (C),1
+50,2020-01-25,2119,X760,Northern Sydney,14000,Hornsby (A),1
+51,2020-01-25,2121,X760,Northern Sydney,16260,Parramatta (C),1
+52,2020-01-25,2126,X760,Northern Sydney,14000,Hornsby (A),1
+53,2020-01-25,2134,X700,Sydney,11300,Burwood (A),1
+54,2020-01-25,2768,X740,Western Sydney,10750,Blacktown (C),1
+55,2020-01-26,2007,X700,Sydney,17200,Sydney (C),1
+56,2020-01-26,2009,X700,Sydney,17200,Sydney (C),1
+57,2020-01-26,2067,X760,Northern Sydney,18250,Willoughby (C),1
+58,2020-01-26,2121,X760,Northern Sydney,16260,Parramatta (C),2
+59,2020-01-26,2135,X700,Sydney,17100,Strathfield (A),1
+60,2020-01-26,2145,X740,Western Sydney,12380,Cumberland (A),1
+61,2020-01-26,2768,X740,Western Sydney,10750,Blacktown (C),1
+62,2020-01-27,2033,X720,South Eastern Sydney,16550,Randwick (C),1
+63,2020-01-27,2114,X760,Northern Sydney,16700,Ryde (C),1
+64,2020-01-27,2122,X760,Northern Sydney,16700,Ryde (C),1
+65,2020-01-27,2134,X700,Sydney,11300,Burwood (A),1
+66,2020-01-27,2145,X740,Western Sydney,12380,Cumberland (A),1
+67,2020-01-27,2194,X700,Sydney,11570,Canterbury-Bankstown (A),1
+68,2020-01-27,2195,X700,Sydney,11570,Canterbury-Bankstown (A),4
+69,2020-01-27,2287,X800,Hunter New England,15900,Newcastle (C),2
+70,2020-01-27,2620,X830,Southern NSW,16490,Queanbeyan-Palerang Regional (A),1
+71,2020-01-28,2032,X720,South Eastern Sydney,16550,Randwick (C),1
+72,2020-01-28,2033,X720,South Eastern Sydney,16550,Randwick (C),1
+73,2020-01-28,2049,X700,Sydney,14170,Inner West (A),2
+74,2020-01-28,2067,X760,Northern Sydney,18250,Willoughby (C),1
+75,2020-01-28,2068,X760,Northern Sydney,18250,Willoughby (C),1
+76,2020-01-28,2070,X760,Northern Sydney,14500,Ku-ring-gai (A),1
+77,2020-01-28,2071,X760,Northern Sydney,14500,Ku-ring-gai (A),1
+78,2020-01-28,2077,X760,Northern Sydney,14000,Hornsby (A),1
+79,2020-01-28,2121,X760,Northern Sydney,16260,Parramatta (C),1
+80,2020-01-28,2125,X740,Western Sydney,17420,The Hills Shire (A),1
+81,2020-01-28,2134,X700,Sydney,11300,Burwood (A),1
+82,2020-01-28,2155,X740,Western Sydney,17420,The Hills Shire (A),1
+83,2020-01-28,2165,X710,South Western Sydney,12850,Fairfield (C),2
+84,2020-01-28,2179,X710,South Western Sydney,14900,Liverpool (C),3
+85,2020-01-28,2203,X700,Sydney,14170,Inner West (A),2
+86,2020-01-28,2206,X700,Sydney,11570,Canterbury-Bankstown (A),1
+87,2020-01-28,2221,X720,South Eastern Sydney,12930,Georges River (A),1
+88,2020-01-28,2222,X720,South Eastern Sydney,12930,Georges River (A),1
+89,2020-01-28,2259,X770,Central Coast,11650,Central Coast (C) (NSW),1
+90,2020-01-28,2305,X800,Hunter New England,15900,Newcastle (C),2
+91,2020-01-28,2320,X800,Hunter New England,15050,Maitland (C),1
+92,2020-01-28,2550,X830,Southern NSW,10550,Bega Valley (A),1
+93,2020-01-28,2611,X840,Murrumbidgee,17080,Snowy Valleys (A),1
+94,2020-01-28,2650,X840,Murrumbidgee,17750,Wagga Wagga (C),1
+95,2020-01-28,2780,X750,Nepean Blue Mountains,10900,Blue Mountains (C),2
+96,2020-01-29,2000,X720,South Eastern Sydney,17200,Sydney (C),1
+97,2020-01-29,2033,X720,South Eastern Sydney,16550,Randwick (C),1
+98,2020-01-29,2050,X700,Sydney,17200,Sydney (C),1
+99,2020-01-29,2060,X760,Northern Sydney,15950,North Sydney (A),1

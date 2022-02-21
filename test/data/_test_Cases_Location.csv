@@ -1,0 +1,101 @@
+,notification_date,postcode,lhd_2010_code,lhd_2010_name,lga_code19,lga_name19,confirmed_by_pcr,confirmed_cases_count
+0,2022-01-20,2000,X720,South Eastern Sydney,17200,Sydney (C),No,36
+1,2022-01-20,2000,X720,South Eastern Sydney,17200,Sydney (C),Yes,45
+2,2022-01-20,2000,X999,Correctional settings,X999,Correctional settings,Yes,3
+3,2022-01-20,2007,X700,Sydney,17200,Sydney (C),No,7
+4,2022-01-20,2007,X700,Sydney,17200,Sydney (C),Yes,8
+5,2022-01-20,2008,X700,Sydney,17200,Sydney (C),No,13
+6,2022-01-20,2008,X700,Sydney,17200,Sydney (C),Yes,6
+7,2022-01-20,2009,X700,Sydney,17200,Sydney (C),No,12
+8,2022-01-20,2009,X700,Sydney,17200,Sydney (C),Yes,18
+9,2022-01-20,2010,X720,South Eastern Sydney,17200,Sydney (C),No,41
+10,2022-01-20,2010,X720,South Eastern Sydney,17200,Sydney (C),Yes,25
+11,2022-01-20,2011,X720,South Eastern Sydney,17200,Sydney (C),No,23
+12,2022-01-20,2011,X720,South Eastern Sydney,17200,Sydney (C),Yes,14
+13,2022-01-20,2015,X700,Sydney,17200,Sydney (C),No,13
+14,2022-01-20,2015,X700,Sydney,17200,Sydney (C),Yes,12
+15,2022-01-20,2016,X700,Sydney,17200,Sydney (C),No,14
+16,2022-01-20,2016,X700,Sydney,17200,Sydney (C),Yes,22
+17,2022-01-20,2017,X700,Sydney,17200,Sydney (C),No,36
+18,2022-01-20,2017,X700,Sydney,17200,Sydney (C),Yes,50
+19,2022-01-20,2018,X700,Sydney,17200,Sydney (C),No,21
+20,2022-01-20,2018,X700,Sydney,17200,Sydney (C),Yes,32
+21,2022-01-20,2019,X720,South Eastern Sydney,10500,Bayside (A),No,22
+22,2022-01-20,2019,X720,South Eastern Sydney,10500,Bayside (A),Yes,24
+23,2022-01-20,2020,X720,South Eastern Sydney,10500,Bayside (A),No,30
+24,2022-01-20,2020,X720,South Eastern Sydney,10500,Bayside (A),Yes,39
+25,2022-01-20,2021,X720,South Eastern Sydney,18500,Woollahra (A),No,21
+26,2022-01-20,2021,X720,South Eastern Sydney,18500,Woollahra (A),Yes,12
+27,2022-01-20,2022,X720,South Eastern Sydney,18050,Waverley (A),No,13
+28,2022-01-20,2022,X720,South Eastern Sydney,18050,Waverley (A),Yes,33
+29,2022-01-20,2023,X720,South Eastern Sydney,18500,Woollahra (A),No,17
+30,2022-01-20,2023,X720,South Eastern Sydney,18500,Woollahra (A),Yes,21
+31,2022-01-20,2024,X720,South Eastern Sydney,18050,Waverley (A),No,20
+32,2022-01-20,2024,X720,South Eastern Sydney,18050,Waverley (A),Yes,19
+33,2022-01-20,2025,X720,South Eastern Sydney,18500,Woollahra (A),No,9
+34,2022-01-20,2025,X720,South Eastern Sydney,18500,Woollahra (A),Yes,11
+35,2022-01-20,2026,X720,South Eastern Sydney,18050,Waverley (A),No,47
+36,2022-01-20,2026,X720,South Eastern Sydney,18050,Waverley (A),Yes,75
+37,2022-01-20,2027,X720,South Eastern Sydney,18500,Woollahra (A),No,5
+38,2022-01-20,2027,X720,South Eastern Sydney,18500,Woollahra (A),Yes,6
+39,2022-01-20,2028,X720,South Eastern Sydney,18500,Woollahra (A),No,5
+40,2022-01-20,2028,X720,South Eastern Sydney,18500,Woollahra (A),Yes,2
+41,2022-01-20,2029,X720,South Eastern Sydney,18500,Woollahra (A),No,7
+42,2022-01-20,2029,X720,South Eastern Sydney,18500,Woollahra (A),Yes,9
+43,2022-01-20,2030,X720,South Eastern Sydney,18050,Waverley (A),No,22
+44,2022-01-20,2030,X720,South Eastern Sydney,18050,Waverley (A),Yes,20
+45,2022-01-20,2031,X720,South Eastern Sydney,16550,Randwick (C),No,36
+46,2022-01-20,2031,X720,South Eastern Sydney,16550,Randwick (C),Yes,43
+47,2022-01-20,2032,X720,South Eastern Sydney,16550,Randwick (C),No,13
+48,2022-01-20,2032,X720,South Eastern Sydney,16550,Randwick (C),Yes,15
+49,2022-01-20,2033,X720,South Eastern Sydney,16550,Randwick (C),No,12
+50,2022-01-20,2033,X720,South Eastern Sydney,16550,Randwick (C),Yes,16
+51,2022-01-20,2034,X720,South Eastern Sydney,16550,Randwick (C),No,28
+52,2022-01-20,2034,X720,South Eastern Sydney,16550,Randwick (C),Yes,30
+53,2022-01-20,2035,X720,South Eastern Sydney,16550,Randwick (C),No,34
+54,2022-01-20,2035,X720,South Eastern Sydney,16550,Randwick (C),Yes,55
+55,2022-01-20,2036,X720,South Eastern Sydney,16550,Randwick (C),No,21
+56,2022-01-20,2036,X720,South Eastern Sydney,16550,Randwick (C),Yes,48
+57,2022-01-20,2037,X700,Sydney,17200,Sydney (C),No,17
+58,2022-01-20,2037,X700,Sydney,17200,Sydney (C),Yes,19
+59,2022-01-20,2038,X700,Sydney,14170,Inner West (A),No,4
+60,2022-01-20,2038,X700,Sydney,14170,Inner West (A),Yes,11
+61,2022-01-20,2039,X700,Sydney,14170,Inner West (A),No,6
+62,2022-01-20,2039,X700,Sydney,14170,Inner West (A),Yes,12
+63,2022-01-20,2040,X700,Sydney,14170,Inner West (A),No,31
+64,2022-01-20,2040,X700,Sydney,14170,Inner West (A),Yes,55
+65,2022-01-20,2040,X999,Correctional settings,X999,Correctional settings,Yes,1
+66,2022-01-20,2041,X700,Sydney,14170,Inner West (A),No,14
+67,2022-01-20,2041,X700,Sydney,14170,Inner West (A),Yes,21
+68,2022-01-20,2042,X700,Sydney,17200,Sydney (C),No,13
+69,2022-01-20,2042,X700,Sydney,17200,Sydney (C),Yes,29
+70,2022-01-20,2043,X700,Sydney,17200,Sydney (C),No,12
+71,2022-01-20,2043,X700,Sydney,17200,Sydney (C),Yes,9
+72,2022-01-20,2044,X700,Sydney,14170,Inner West (A),No,12
+73,2022-01-20,2044,X700,Sydney,14170,Inner West (A),Yes,5
+74,2022-01-20,2045,X700,Sydney,14170,Inner West (A),No,4
+75,2022-01-20,2045,X700,Sydney,14170,Inner West (A),Yes,11
+76,2022-01-20,2046,X700,Sydney,11520,Canada Bay (A),No,24
+77,2022-01-20,2046,X700,Sydney,11520,Canada Bay (A),Yes,39
+78,2022-01-20,2047,X700,Sydney,11520,Canada Bay (A),No,14
+79,2022-01-20,2047,X700,Sydney,11520,Canada Bay (A),Yes,9
+80,2022-01-20,2048,X700,Sydney,14170,Inner West (A),No,5
+81,2022-01-20,2048,X700,Sydney,14170,Inner West (A),Yes,16
+82,2022-01-20,2049,X700,Sydney,14170,Inner West (A),No,14
+83,2022-01-20,2049,X700,Sydney,14170,Inner West (A),Yes,15
+84,2022-01-20,2050,X700,Sydney,17200,Sydney (C),No,6
+85,2022-01-20,2050,X700,Sydney,17200,Sydney (C),Yes,14
+86,2022-01-20,2060,X760,Northern Sydney,15950,North Sydney (A),No,18
+87,2022-01-20,2060,X760,Northern Sydney,15950,North Sydney (A),Yes,17
+88,2022-01-20,2061,X760,Northern Sydney,15950,North Sydney (A),No,8
+89,2022-01-20,2061,X760,Northern Sydney,15950,North Sydney (A),Yes,4
+90,2022-01-20,2062,X760,Northern Sydney,15950,North Sydney (A),No,2
+91,2022-01-20,2062,X760,Northern Sydney,15950,North Sydney (A),Yes,6
+92,2022-01-20,2063,X760,Northern Sydney,18250,Willoughby (C),No,3
+93,2022-01-20,2063,X760,Northern Sydney,18250,Willoughby (C),Yes,8
+94,2022-01-20,2064,X760,Northern Sydney,18250,Willoughby (C),No,5
+95,2022-01-20,2064,X760,Northern Sydney,18250,Willoughby (C),Yes,14
+96,2022-01-20,2065,X760,Northern Sydney,14700,Lane Cove (A),No,33
+97,2022-01-20,2065,X760,Northern Sydney,14700,Lane Cove (A),Yes,31
+98,2022-01-20,2066,X760,Northern Sydney,14700,Lane Cove (A),No,43
+99,2022-01-20,2066,X760,Northern Sydney,14700,Lane Cove (A),Yes,41
