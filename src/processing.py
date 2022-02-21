@@ -21,9 +21,9 @@ class AgeGroup():
     
     data = "Cases_AgeRange.csv"
     data_dis = "Cases_AgeRange_Dis.csv"
+    _covid = CovidData()
 
     def __init__(self):
-        self._covid = CovidData()
         self.df = self._covid.load_csv(self.data)
         self.df_dis = filter_before_discontinued_date_and_convert_dt_to_string(
             self._covid.load_csv(self.data_dis, parse_dates=['notification_date'])
@@ -56,9 +56,9 @@ class CaseLocation():
     
     data = "Cases_Location.csv"
     data_dis = "Cases_Location_Dis.csv"
+    _covid = CovidData()
 
     def __init__(self):
-        self._covid = CovidData()
         self.df: pd.DataFrame = self._covid.load_csv(self.data)
         self.df_dis = filter_before_discontinued_date_and_convert_dt_to_string(
             self._covid.load_csv(self.data_dis, parse_dates=['notification_date'])
@@ -128,9 +128,9 @@ class Tests():
     """Tests Data Class"""
     
     data = "Tests_Location.csv"
+    _covid = CovidData()
     
     def __init__(self):
-        self._covid = CovidData()
         self.df = self._covid.load_csv(self.data)
 
     def postcode(self, postcode):
