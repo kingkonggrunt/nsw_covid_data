@@ -44,7 +44,6 @@ class TestPerformance(unittest.TestCase):
         start = time.time()
         out = processing.filter_before_discontinued_date_and_convert_dt_to_string(df)
         end = time.time()
-        print(end-start)
         self.assertLess((end - start), 0.05)
         
         
@@ -62,7 +61,7 @@ class AgeGroup(unittest.TestCase):
         self.assertTrue(data.age_group_totals)
         self.assertTrue(data.age_group_overtime("0-19"))
         
-    def test_random_dis_date(self):
+    def test_random_dis_date(self):  # TODO: replicate this test
         """Test that the case number for a `random` date in the discontinued test dataset is correct"""
         date = '2020-03-09'
         age_group = processing.AgeGroup

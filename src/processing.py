@@ -1,7 +1,6 @@
 import pandas as pd
 from .data import CovidData
 
-# TODO: integrate discontinued data because the arrg data only shows data after the 20-1-2020
 
 def filter_before_discontinued_date_and_convert_dt_to_string(df: pd.DataFrame):
     """
