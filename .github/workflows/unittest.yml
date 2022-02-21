@@ -15,9 +15,10 @@ jobs:
         with:
           python-version: "3.9"
           architecture: 'x64'
+          cache: 'pip'
       - name: Update PIP
         run: python -m pip install --upgrade pip
       - name: Install Packages and Dependencies
         run: pip install -r requirements.txt
-      - name: Run unittests (nose2)
+      - name: Run Unittests (nose2)
         run: nose2 -v
