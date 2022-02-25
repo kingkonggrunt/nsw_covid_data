@@ -24,6 +24,7 @@ jobs:
             cd Development/Supervisor
             venv/bin/supervisorctl restart covid_data_updater
             venv/bin/supervisorctl restart covid_data
+            sleep 5
             venv/bin/supervisorctl status
             
 
