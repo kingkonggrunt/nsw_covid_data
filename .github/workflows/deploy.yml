@@ -10,7 +10,7 @@ jobs:
       name: master
     runs-on: ubuntu-latest
     steps:
-      - name: SSH into Server
+      - name: SSH into Server and Deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_NAME}}
@@ -18,6 +18,12 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            echo "Hello World"
-            pwd
+            cd Development/nsw_covid_data
+            git pull
+            cd  
+            cd Development/Supervisor
+            venv/bin/supervisorctl restart covid_data_updater
+            venv/bin/supervisorctl restart covid_data
+            venv/bin/supervisorctl status
+            
 
