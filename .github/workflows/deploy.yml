@@ -1,0 +1,23 @@
+name: Deployment
+on:
+  push:
+    branches: 'master'
+    paths-ignore: 
+      - '**.md'
+jobs:
+  Deploy-on-Ubuntu:
+    environment:
+      name: master
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH into Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_NAME}}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "Hello World"
+            pwd
+
