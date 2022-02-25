@@ -13,7 +13,7 @@ from src import processing
 # ===== Verify Test Datasets are available
 class TestData(unittest.TestCase):
     """Test that the test data exists in test/data"""
-    
+
     def test_agerange(self):
         """Age Range Data"""
         self.assertTrue(path.exists("test/data/_test_Cases_AgeRange_Dis.csv"),
@@ -37,7 +37,7 @@ class TestData(unittest.TestCase):
 # ===== Performance Tests
 class TestPerformance(unittest.TestCase):
     """Test performance of certain functions"""
-    
+
     def test_filter_dt_conversion(self):
         "Test that function is fast"
         df = pd.read_csv("test/data/_test_Cases_Location_Dis.csv", parse_dates=['notification_date'])
@@ -45,12 +45,12 @@ class TestPerformance(unittest.TestCase):
         out = processing.filter_before_discontinued_date_and_convert_dt_to_string(df)
         end = time.time()
         self.assertLess((end - start), 0.05)
-        
-        
+
+
 # ===== AgeGroup
 class AgeGroup(unittest.TestCase):
     """Test AgeGroup functionality"""
-    
+
     def test_output(self):
         """Test output is a non empty dictionary"""
         age_group = processing.AgeGroup
@@ -60,7 +60,7 @@ class AgeGroup(unittest.TestCase):
         data = age_group()
         self.assertTrue(data.age_group_totals)
         self.assertTrue(data.age_group_overtime("0-19"))
-        
+
     def test_random_dis_date(self):  # TODO: replicate this test
         """Test that the case number for a `random` date in the discontinued test dataset is correct"""
         date = '2020-03-09'
@@ -70,12 +70,12 @@ class AgeGroup(unittest.TestCase):
         age_group._covid._dir = "test/data"
         data = age_group()
         self.assertEqual(data.age_group_overtime("0-19")[date], 1)
-     
-     
+
+
 # ===== CaseLocation
 class Caselocation(unittest.TestCase):
     """Test CaseLocation functionality"""
-    
+
     def test_output(self):
         """Test output is a non empty dictionary"""
         location = processing.CaseLocation
@@ -91,12 +91,12 @@ class Caselocation(unittest.TestCase):
         self.assertTrue(data.lga('Burwood (A)'))
         self.assertTrue(data.lhd('Sydney'))
         self.assertTrue(data.lhd('X700'))
-                        
-                        
+
+
 # ===== Tests
 class Tests(unittest.TestCase):
     """Test Tests functionality"""
-    
+
     def test_output(self):
         "Test output is a non empty dictionary"
         tests = processing.Tests
