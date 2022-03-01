@@ -1,13 +1,12 @@
-# Perform tests for each function (return a dictionary of expected values)
-    # tests
-    # Caselocation
-    # Age Group
-
 import unittest
 from os import path
 import time
 import pandas as pd
 from src import processing
+from src.proxy import NGINXConfig
+import api
+from fastapi.testclient import TestClient
+
 
 
 # ===== Verify Test Datasets are available
@@ -16,21 +15,21 @@ class TestData(unittest.TestCase):
 
     def test_agerange(self):
         """Age Range Data"""
-        self.assertTrue(path.exists("test/data/_test_Cases_AgeRange_Dis.csv"),
+        self.assertTrue(path.exists("tests/data/_test_Cases_AgeRange_Dis.csv"),
                         'Test Dataset does not exist - Run `data/generate.py')
-        self.assertTrue(path.exists("test/data/_test_Cases_AgeRange.csv"),
+        self.assertTrue(path.exists("tests/data/_test_Cases_AgeRange.csv"),
                         'Test Dataset does not exist - Run `data/generate.py')
 
     def test_location(self):
         "Location Data"
-        self.assertTrue(path.exists("test/data/_test_Cases_Location_Dis.csv"),
+        self.assertTrue(path.exists("tests/data/_test_Cases_Location_Dis.csv"),
                         'Test Dataset does not exist - Run `data/generate.py')
-        self.assertTrue(path.exists("test/data/_test_Cases_Location.csv"),
+        self.assertTrue(path.exists("tests/data/_test_Cases_Location.csv"),
                         'Test Dataset does not exist - Run `data/generate.py')
 
     def test_tests(self):
         "Test Data"
-        self.assertTrue(path.exists("test/data/_test_Tests_Location.csv"),
+        self.assertTrue(path.exists("tests/data/_test_Tests_Location.csv"),
                         'Test Dataset does not exist - Run `data/generate.py')
 
 
@@ -40,7 +39,7 @@ class TestPerformance(unittest.TestCase):
 
     def test_filter_dt_conversion(self):
         "Test that function is fast"
-        df = pd.read_csv("test/data/_test_Cases_Location_Dis.csv", parse_dates=['notification_date'])
+        df = pd.read_csv("tests/data/_test_Cases_Location_Dis.csv", parse_dates=['notification_date'])
         start = time.time()
         out = processing.filter_before_discontinued_date_and_convert_dt_to_string(df)
         end = time.time()
@@ -56,7 +55,7 @@ class AgeGroup(unittest.TestCase):
         age_group = processing.AgeGroup
         age_group.data = "_test_Cases_AgeRange.csv"
         age_group.data_dis = "_test_Cases_AgeRange_Dis.csv"
-        age_group._covid._dir = "test/data"
+        age_group._covid._dir = "tests/data"
         data = age_group()
         self.assertTrue(data.age_group_totals)
         self.assertTrue(data.age_group_overtime("0-19"))
@@ -67,7 +66,7 @@ class AgeGroup(unittest.TestCase):
         age_group = processing.AgeGroup
         age_group.data = "_test_Cases_AgeRange.csv"
         age_group.data_dis = "_test_Cases_AgeRange_Dis.csv"
-        age_group._covid._dir = "test/data"
+        age_group._covid._dir = "tests/data"
         data = age_group()
         self.assertEqual(data.age_group_overtime("0-19")[date], 1)
 
@@ -81,7 +80,7 @@ class Caselocation(unittest.TestCase):
         location = processing.CaseLocation
         location.data = "_test_Cases_Location.csv"
         location.data_dis = "_test_Cases_Location_Dis.csv"
-        location._covid._dir = "test/data"
+        location._covid._dir = "tests/data"
         data = location()
         self.assertTrue(data.list_locations("lhd"))
         self.assertTrue(data.list_locations("lga"))
@@ -101,10 +100,9 @@ class Tests(unittest.TestCase):
         "Test output is a non empty dictionary"
         tests = processing.Tests
         tests.data = "_test_Tests_Location.csv"
-        tests._covid._dir = "test/data"
+        tests._covid._dir = "tests/data"
         data = tests()
         self.assertTrue(data.postcode(2134))
         self.assertTrue(data.lga('Burwood (A)'))
         self.assertTrue(data.lhd('Sydney'))
-        self.assertTrue(data.lhd('X700')) 
-     
+        self.assertTrue(data.lhd('X700'))
