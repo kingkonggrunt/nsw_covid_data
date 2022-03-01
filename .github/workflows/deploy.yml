@@ -19,6 +19,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd Development/nsw_covid_data
+            venv/bin/pip install -r requirements.txt
             git pull
             cd  
             cd Development/Supervisor
