@@ -120,7 +120,7 @@ def return_locations(location_type: str, response: Response):
         raise HTTPException(status.HTTP_404_NOT_FOUND,
                             detail="Invalid location type. Use one of 'lga, postcode, or lhd'")
 
-    r[cache_key] = json.loads(out)
+    r[cache_key] = json.dumps(out)
 
     del info
     del out
