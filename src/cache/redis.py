@@ -30,11 +30,22 @@ class RedisDictionary():
     def __setitem__(self, key, value):
         self.r.set(key, value)
 
+    def __delitem__(self, key):
+        if key in self:
+            self.r.delete(key)
+
     def __contains__(self, key):
         return self.r.exists(key)
 
     def __repr__(self):
         return f"RedisDictionary(redis.Redis, db={self.db})"
+
+    def __len__(self):
+        return len(self.r.scan_iter("*"))
+
+    def find_keys(self, pattern):
+        """Search Redis Keys according to a pattern"""
+        return list(self.r.scan_iter(pattern))  # TODO: find the way (i forgot) to modify output to non-list if len is zero (without if statements)
 
     def multi_set(self, d):
         """multi_set
